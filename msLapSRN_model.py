@@ -14,7 +14,7 @@ R = 3
 
 def embedding_model(filters=filters, layer_num=D, name="embed"):
     '''
-	Extracting features inside the shared module
+    Extracting features inside the shared module
     '''
     img_input = Input(shape=(None, None, filters))
     x = LeakyReLU(alpha=0.2)(img_input)
@@ -30,8 +30,8 @@ def embedding_model(filters=filters, layer_num=D, name="embed"):
 
 def _upsample_and_condense(x, filters=filters):
     '''
-	upsample and condense to resudual image 
-	inside the shared module
+    upsample and condense to resudual image 
+    inside the shared module
     '''
     x = LeakyReLU(alpha=0.2)(x)
     upsample = Conv2DTranspose(filters, (4, 4), strides=(2, 2), padding='same',
@@ -49,7 +49,7 @@ def _upsample_and_condense(x, filters=filters):
 
 def residual_model(recursive_num=R, filters=filters):
     '''
-	pipeline for the shared module
+    pipeline for the shared module
     '''
     embedding = embedding_model()
     img_input = Input(shape=(None, None, filters))
@@ -64,7 +64,7 @@ def residual_model(recursive_num=R, filters=filters):
 
 def upsample_model(filters=filters):
     '''
-	upsmaple the input image
+    upsmaple the input image
     '''
     img_input = Input(shape=(None, None, 1))
     x = Conv2D(filters, (3,3), padding='same',
@@ -80,7 +80,7 @@ def upsample_model(filters=filters):
 
 def initConv_model(filters=filters):
     '''
-	transform the original image into a set of feature maps
+    transform the original image into a set of feature maps
     '''
     img_input = Input(shape=(None, None, 1))
     x = Conv2D(filters, (3,3), padding='same',

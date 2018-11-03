@@ -2,6 +2,7 @@ from msLapSRN_model import net
 from dataset import ReadSequence
 
 import pickle
+import os
 import tensorflow as tf
 import numpy as np
 import keras.backend as K
@@ -43,6 +44,9 @@ if __name__ == "__main__":
                   metrics=[PSNR])
     lrate=LearningRateScheduler(adjust_learning_rate)
 
+    # path to save models
+    if not os.path.exists("./checkpoint"):
+        os.makedirs("./checkpoint")
     filepath="./checkpoint/{epoch:02d}-{loss:.2f}.hdf5"
     checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=True, save_weights_only=True, mode='min', period=1)
     callbacks_list = [checkpoint, lrate]
