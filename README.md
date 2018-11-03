@@ -1,8 +1,8 @@
 # MS-LapSRN
 Multi-Scale Laplacian Super Resolution Network
 
-This is an Keras implementation based on the following research with a few tweaks 
-[Fast and Accurate Image Super-Resolution with Deep Laplacian Pyramid Networks](http://vllab.ucmerced.edu/wlai24/LapSRN/)
+This is an Keras implementation based on the following research with a few tweaks,  
+[Fast and Accurate Image Super-Resolution with Deep Laplacian Pyramid Networks](http://vllab.ucmerced.edu/wlai24/LapSRN/).
 The model has multi-scale training, shared-source skip connection and shared parametes for each upscale stage. With these  properties, it achieves a depth of ~40 layers with just ~120,000 trainable parameters (32 filters for each 3x3 convolutional layer). Because of this, it is suitable for small datasets.
 
 ## How to train the model
